@@ -1,0 +1,23 @@
+{
+  "name": "car-manager",
+  "version": "1.0.0",
+  "description": "a simple manager for different cars",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev":"nodemon index.js"
+  },
+  "keywords": [
+    "express",
+    "car"
+  ],
+  "author": "jas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
