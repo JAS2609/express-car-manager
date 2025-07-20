@@ -1,9 +1,29 @@
 import express from 'express'
 import 'dotenv/config'
 const app = express()
+import logger from "./logger.js";
+import morgan from "morgan";
 
 const port =process.env.PORT|| 4000
 app.use(express.json())
+const morganFormat = ":method :url :status :response-time ms";
+
+
+app.use(
+  morgan(morganFormat, {
+    stream: {
+      write: (message) => {
+        const logObject = {
+          method: message.split(" ")[0],
+          url: message.split(" ")[1],
+          status: message.split(" ")[2],
+          responseTime: message.split(" ")[3],
+        };
+        logger.info(JSON.stringify(logObject));
+      },
+    },
+  })
+);
 
 let carData=[]
 let nextId=1
